@@ -86,13 +86,15 @@ module.exports = class BinarySearchTree {
     this.initialRoot = removeNode(this.initialRoot, data);
   
     function removeNode(node, data) {
-      if(!node) return null;
+      if(!node) {
+        return null
+      };
   
       if (data < node.data) {
         node.leftChild = removeNode(node.leftChild, data);
         return node;
       } else if (data > node.data) {
-        node.rightChild = removeNode(node.rightChild, data)
+        node.rightChild = removeNode(node.rightChild, data);
         return node;
       } else {
         if (!node.leftChild && !node.rightChild) {
@@ -105,7 +107,7 @@ module.exports = class BinarySearchTree {
         };
         
         if (!node.rightChild) {
-          node = node.rightChild;
+          node = node.leftChild;
           return node;
         };
 
